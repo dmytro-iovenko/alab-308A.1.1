@@ -39,7 +39,8 @@ function prime(n) {
     }
   }
   // Once complete, use the alert() method to alert the user that the calculation is finished.
-  alert("The calculation is finished!");
+  // alert only appears once all numbers have been rendered
+  setTimeout(() => alert("The calculation is finished!"), 0);
 }
 
 // Run your function with n equal to 10,000.
