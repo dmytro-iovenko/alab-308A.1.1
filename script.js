@@ -20,7 +20,28 @@ try {
 }
 
 // Part 2: Trampolines
-// TBD
+// Write a recursive function that completely flattens an array of nested arrays,
+// regardless of how deeply nested the arrays are.
+function flatNestedArrays(array = []) {
+  for (item of array) {
+    if (Array.isArray(item)) {
+      return () => flatNestedArrays(array.flat());
+    }
+  }
+  return array;
+}
+// Once your recursive function is complete, trampoline it.
+function trampoline(f, ...args) {
+  let result = f(...args);
+  while (typeof result === "function") {
+    result = result();
+  }
+  return result;
+}
+// Test trampoline function
+const test = [[[[1], [[[2, [3, [4, [[[5]], [6]]]], 7], 8]]], 9]];
+const flat = trampoline(flatNestedArrays(test));
+console.log(flat);
 
 // Part 3: Deferred Execution
 // Create a simple HTML element to hold text. Cache this HTML element into a JavaScript variable.
@@ -44,6 +65,4 @@ function prime(n) {
 }
 
 // Run your function with n equal to 10,000.
-{
-  prime(10000);
-}
+prime(10000);
