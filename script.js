@@ -29,19 +29,20 @@ document.body.appendChild(h1El);
 // Write a function that takes a parameter n and adds
 // a list of all prime numbers between one and n to your HTML element.
 function prime(n) {
-  const primeArr = [];
   for (let i = 0; i < n; i++) {
     if (i == 2 || i == 3 || i == 5 || i == 7) {
-      primeArr.push(i);
+      h1El.textContent += i + " ";
     } else if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
       continue;
     } else {
-      primeArr.push(i);
+      h1El.textContent += i + " ";
     }
   }
-  h1El.textContent = primeArr.join(", ");
   // Once complete, use the alert() method to alert the user that the calculation is finished.
   alert("The calculation is finished!");
 }
-// Run your function with n equal to 10,000. 
-prime(10000);
+
+// Run your function with n equal to 10,000.
+{
+  prime(10000);
+}
